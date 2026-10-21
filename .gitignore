@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+# Build output
+build/
+dist/
+*.exe
+# Data and secrets
+*.db
+*.log
+*.pfx
+config.yaml
+data/
+runs/
+models/*.pt
+models/*.onnx
+*.mp4

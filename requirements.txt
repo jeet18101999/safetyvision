@@ -1,0 +1,11 @@
+# Install PyTorch with CUDA first (setup.ps1 does this), then:
+ultralytics>=8.3.0
+opencv-python>=4.9
+PySide6>=6.6
+numpy
+requests
+PyYAML
+av
+onnx
+onnx2torch
+psutil

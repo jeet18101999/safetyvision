@@ -1,0 +1,104 @@
+﻿xvr:
+  brand: dahua
+  host: 192.168.1.100
+  port: 554
+  username: admin
+  password: CHANGE_ME
+  channels: 1-16
+  stream: main
+  custom_template: rtsp://{auth}{host}:{port}/cam/realmonitor?channel={channel}&subtype={subtype}
+extra_sources: []
+detection:
+  device: auto
+  imgsz: 640
+  fps_per_camera: 4.0
+  person_model: models/yolo11s-pose.pt
+  person_conf: 0.45
+  man_down_enabled: true
+  man_down_seconds: 5.0
+  man_down_angle: 55.0
+  ppe_enabled: true
+  ppe_mode: local_ai
+  ppe_model: models/ppe.pt
+  ppe_conf: 0.4
+  ppe_required:
+  - helmet
+  - vest
+  ppe_min_person_height: 90
+  ppe_recheck_seconds: 20.0
+  ppe_class_aliases:
+    helmet:
+    - helmet
+    - hardhat
+    - hard hat
+    - safety helmet
+    vest:
+    - vest
+    - safety vest
+    - hi vis
+    - reflective vest
+    - reflective jacket
+    mask:
+    - mask
+    - face mask
+    gloves:
+    - glove
+    - gloves
+    goggles:
+    - goggles
+    - glasses
+    - safety glasses
+    boots:
+    - shoes
+    - boots
+    - safety shoes
+    no_helmet:
+    - no helmet
+    - no hardhat
+    - no hard hat
+    - head
+    - without helmet
+    no_vest:
+    - no vest
+    - no safety vest
+    - without vest
+    no_mask:
+    - no mask
+    no_gloves:
+    - no glove
+    - no gloves
+    no_goggles:
+    - no goggles
+    no_boots:
+    - no shoes
+    - no boots
+  fire_enabled: true
+  fire_mode: hybrid
+  fire_model: models/fire/current.pt
+  fire_conf: 0.25
+verifier:
+  enabled: true
+  ollama_url: http://127.0.0.1:11434
+  model: qwen2.5vl:7b
+  timeout: 120
+  min_confidence: 0.6
+  cooldown_seconds: 10.0
+  alert_if_unavailable: true
+learning:
+  enabled: true
+  auto_train: true
+  min_new_samples: 40
+  epochs: 20
+  batch: 8
+  imgsz: 640
+  base_model: models/yolo11n.pt
+  val_fraction: 0.2
+  require_improvement: true
+  min_map50_to_deploy: 0.3
+  max_negative_ratio: 1.5
+alerts:
+  cooldown_seconds: 30.0
+  sound: true
+ui:
+  autostart: false
+  display_fps: 15
